@@ -1,0 +1,109 @@
+# Veilig Leren Lezen (KIM-versie): letters en woorden per kern.
+# Overgenomen van de gratis doelkaarten van jufbijtje.nl (KIM versie 2020);
+# bronnen in methoden/vll/README.md.
+# Kern 7 t/m 11 hebben geen nieuwe letters meer; daar staan bij `letters`
+# de nieuwe klanken (kern 7) of niets.
+#
+# letters  : de nieuwe letters van de kern
+# woordjes : de woorden met plaatje op de doelkaart
+# oefen    : de woorden van "ik oefen", per rij zoals op de kaart
+
+start:
+  letters: [i, k, m, s]
+  woordjes: [ik, kim, sim]
+  oefen: [ik, mis, kim, mik, sis, kik, sik, sim, is]
+
+1:
+  letters: [p, aa, r, e, v]
+  woordjes: [kip, rem, raak, aap, vis]
+  oefen: [kip, ver, paar, raak, raap, maar, vis, aap, raar, vaar, rem, rek]
+
+2:
+  letters: [n, t, ee, b, oo]
+  woordjes: [maan, pet, meet, been, boot]
+  oefen: [pet, in, kaak, meet, mis, boot, pit,
+          pit, vin, taak, eet, mes, boon, poot,
+          tip, tin, kaat, een, mees, boom, noot,
+          tim, tik, maat, nee, meen, oom, toon,
+          tem, kit, met, neem, teen, room, teen]
+
+3:
+  letters: [d, oe, z, ij, h]
+  woordjes: [doos, doek, zee, ijs, haar]
+  oefen: [doek, ree, ijs, haar, zij, hip,
+          doet, roe, tijs, haas, hij, dip,
+          doen, roep, tijn, haan, hijs, doop,
+          koen, soep, zijn, heen, hoes, hoop,
+          koe, poes, zij, hees, hoek, hoor]
+
+4:
+  letters: [w, o, a, u, j]
+  woordjes: [wip, zon, zak, bus, jas]
+  oefen: [wip, wij, zak, bus, pot, jas,
+          wit, wijk, tak, kus, put, jan,
+          wet, week, kat, mus, hut, jak,
+          wen, waak, mat, dus, hup, jat,
+          woon, haak, map, dun, hap, jet]
+
+5:
+  letters: [eu, ie, l, ou, uu]
+  woordjes: [jeuk, ziek, lijm, hout, vuur]
+  oefen: [jaar, wie, lijm, touw, tor, dek, hout,
+          jaap, wiek, lam, wout, tuur, deuk, kous,
+          paar, wak, mal, wou, tuut, deun, kou,
+          pier, bak, mol, wie, tut, teun, jou,
+          por, beuk, lol, wiel, put, ton, mouw]
+
+6:
+  letters: [g, au, ui, f, ei]
+  woordjes: [mug, saus, muis, duif, geit]
+  oefen: [reuk, saus, leuk, muis, saus, geit, fuif,
+          jeuk, paus, luik, ruis, suis, giet, kuif,
+          deuk, pauw, kuil, huis, buis, gat, kef,
+          dak, lauw, uil, huil, boos, gaf, kers,
+          bak, dauw, al, kuil, bij, graaf, vers]
+
+7:
+  letters: [sch, c, ch, ng]
+  woordjes: [zakdoek, voetbal, zeilboot, melk, hark, laars, stap, kroon, vlieg, schoen, schaap, bang, eng, ring, tong]
+  oefen: [kort, vast, trein, school, bang, voetbal,
+          kaart, last, trip, schaal, lang, rugzak,
+          kaars, bast, trui, schaap, hang, zakdoek,
+          kers, best, spui, schip, hing, duikboot,
+          kerk, vest, speel, schop, ring, waslijn]
+
+8:
+  letters: []
+  woordjes: [krans, spons, goud, web, bank, lach, bocht, schram, muisje, boompje, stoeltje, sla, vlo, nu]
+  oefen: [stort, koud, vonk, acht, schrift, doosje, nu,
+          start, goed, zink, zacht, schrijf, dasje, na,
+          staart, krab, flink, tocht, schroef, boompje, la,
+          draagt, bed, vink, zocht, schrok, raampje, zo,
+          droomt, web, link, mocht, schreef, stoeltje, vlo]
+
+9:
+  letters: []
+  woordjes: [broekriem, hijskraan, strik, markt, haai, kooi, roei, bloemen, mantel, tijger, takken, kommen, betaal, gebit, verdriet]
+  oefen: [keelpijn, kerst, vlaai, flinke, botsen, vlaggen, geluid,
+          boomstam, korst, zwaait, ronde, tuinen, hakken, bewoog,
+          palmboom, struik, kooi, woede, wandel, poppen, verzon,
+          plakstift, strijk, mooi, juiste, poedel, messen, verbruik,
+          postduif, spruit, sproeit, vroege, schilder, ratten, verdien]
+
+10:
+  letters: []
+  woordjes: [leeuw, kieuw, duw, herfst, kortst, bomen, nagel, snavel, knopen, hoepel, dansen, ballen, kegel, angst, links, rechts, boeien, leeuwen, nieuws, ruwe]
+  oefen: [nieuwe, kortst, daken, knopen, kapper, zwaailicht, kieuwen,
+          kieuwen, hardst, laken, braden, brokken, linksaf, nieuws,
+          nieuwsbrief, sterkst, reken, kraken, zitten, sproeien, sluwe,
+          leeuwtje, ergst, zegen, sturen, flessen, saaist, leeuwin,
+          sneeuwvlok, langst, deken, spelen, lussen, rechts, nieuws]
+
+11:
+  letters: []
+  woordjes: [twintig, vrolijk, koning, prentenboek, inpakken, muziekje, bezempje, worteltje, onkruid, ontploffen, bedoelen, gebeuren, vertellen]
+  oefen: [twintig, prentenboek, vulling, inpakken, ringetje, vrolijk, belachelijk,
+          vorig, hagelslag, kleding, voorlezen, velletje, eerlijk, ondiep,
+          jarig, boterham, botsing, uitgeven, spelletje, moeilijk, geweest,
+          zuinig, sprookjesboek, kruising, optillen, tafeltje, eerlijk, ongeluk,
+          bazig, poppenhuis, paling, aanwijzen, zeehondje, sierlijk, ontploffen]
