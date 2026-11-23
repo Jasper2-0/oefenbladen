@@ -17,7 +17,7 @@ Het project heeft drie delen:
 | --- | --- | --- | --- |
 | Lezen groep 3 | Veilig Leren Lezen (KIM) | `vakken/lezen/lezen.typ`: leesblad, rol en lees | `methoden/vll/kernen.yaml` |
 | Schrijven | Pennenstreken | `vakken/schrijven/schrijven.typ`: lineatuur, naschrijven | `methoden/pennenstreken/` |
-| Taal en spelling | Staal | `vakken/taal/taal.typ`: spelling, woordkaartjes, bingo, woordzoeker | nog niet openbaar vastgelegd |
+| Taal en spelling | Staal | `vakken/taal/taal.typ`: spelling, woordkaartjes, bingo, woordzoeker | `methoden/staal/regelkaart-groep-4.yaml` |
 | Rekenen | De wereld in getallen 5 | `vakken/rekenen/rekenen.typ`: getallenlijn, rekenrek, geld, sommen | nog niet openbaar vastgelegd |
 
 ## Een blad maken

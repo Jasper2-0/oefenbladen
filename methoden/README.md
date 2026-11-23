@@ -17,5 +17,5 @@ Regels voor wat hier mag staan:
 | --- | --- | --- | --- |
 | `vll/` | Veilig Leren Lezen, KIM-versie | lezen groep 3 | letters en woorden per kern (start t/m 11) |
 | `pennenstreken/` | Pennenstreken | schrijven | schrijfletter en lineatuur |
-| `staal/` | Staal | taal en spelling groep 4+ | nog leeg, zie README |
+| `staal/` | Staal | taal en spelling groep 4+ | regelkaart groep 4 (categorieën; regelzinnen niet, die zijn van de uitgever) |
 | `wig5/` | De wereld in getallen 5 | rekenen | nog leeg, zie README |

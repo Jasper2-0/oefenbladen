@@ -25,6 +25,25 @@
   ),
 )
 
+// De regelkaart van een groep, uit methoden/staal/: nummer en naam per
+// categorie. De regelzinnen zijn tekst van de uitgever en staan niet in de
+// repo; wie de kaart heeft, geeft ze mee met `tekst:` (een yaml met dezelfde
+// sleutels en per categorie een lijst `regel`).
+#let regelkaart-groep-4 = yaml("/methoden/staal/regelkaart-groep-4.yaml")
+
+// Kader met regels van de regelkaart, op naam van de categorie (de sleutels
+// in de yaml), bijvoorbeeld `regels-van("hakwoord", "zingwoord", tekst: t)`.
+// Elke regel van de kaart komt op een eigen regel; "1e" en "2e" krijgen een
+// superscript. Zonder `tekst` alleen nummer en naam.
+#let regels-van(kaart: regelkaart-groep-4, tekst: (:), ..namen) = {
+  show regex("\b[12]e\b"): it => [#it.text.first()#super[e]]
+  regels(..namen.pos().map(n => {
+    let c = kaart.at(n)
+    let r = tekst.at(n, default: (:)).at("regel", default: ())
+    (c.nummer, c.naam, r.join(linebreak()))
+  }))
+}
+
 // Korte invulplek in een woord, voor een of twee letters.
 #let gat(breedte: 1.3cm) = invul(breedte: breedte)
 

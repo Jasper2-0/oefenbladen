@@ -1,0 +1,122 @@
+# Staal spelling, regelkaart groep 4 (Staal 1, kaart 540022, 2013/2014):
+# de categorieën met hun nummer en naam. Zie methoden/staal/README.md.
+#
+# De regelzinnen en woordrijtjes van de kaart staan hier niet: dat is tekst
+# van de uitgever. Wie de kaart heeft, zet ze in een eigen bestand met
+# dezelfde sleutels en geeft dat mee aan regels-van(tekst: ...).
+#
+# Per categorie:
+#   nummer : het nummer op de kaart; null voor een subcategorie
+#   naam   : de categorienaam zoals op de kaart
+
+hakwoord:
+  nummer: 1
+  naam: Hakwoord
+
+speciaal-hakwoord:
+  nummer: null
+  naam: Speciaal hakwoord
+
+zingwoord:
+  nummer: 2
+  naam: Zingwoord
+
+luchtwoord:
+  nummer: 3
+  naam: Luchtwoord
+
+ch-woorden:
+  nummer: null
+  naam: ch-woorden
+
+plankwoord:
+  nummer: 4
+  naam: Plankwoord
+
+eer-oor-eur-woord:
+  nummer: 5
+  naam: Eer-oor-eur-woord
+
+eer-woord:
+  nummer: null
+  naam: Eer-woord
+
+oor-woord:
+  nummer: null
+  naam: Oor-woord
+
+eur-woord:
+  nummer: null
+  naam: Eur-woord
+
+eel-woord:
+  nummer: null
+  naam: Eel-woord
+
+aai-ooi-oei-woord:
+  nummer: 6
+  naam: Aai-ooi-oei-woord
+
+eeuw-ieuw-woord:
+  nummer: 7
+  naam: Eeuw-ieuw-woord
+
+langermaakwoord:
+  nummer: 8
+  naam: Langermaakwoord
+
+langermaakwoord-b:
+  nummer: null
+  naam: Langermaakwoord -b
+
+voorvoegsel:
+  nummer: 9
+  naam: Voorvoegsel
+
+klankgroepenwoord-lange-klank:
+  nummer: 10
+  naam: Klankgroepenwoord, lange klank (A-lijst)
+
+klankgroepenwoord-korte-klank:
+  nummer: 10
+  naam: Klankgroepenwoord, korte klank
+
+klankgroepenwoord-tweetekenklank:
+  nummer: 10
+  naam: Klankgroepenwoord, tweetekenklank
+
+klankgroepenwoord-medeklinker:
+  nummer: 10
+  naam: Klankgroepenwoord, medeklinker
+
+verkleinwoord:
+  nummer: 11
+  naam: Verkleinwoord
+
+achtervoegsel-ig:
+  nummer: 12
+  naam: Achtervoegsel -ig
+
+achtervoegsel-lijk:
+  nummer: 12
+  naam: Achtervoegsel -lijk
+
+ei-ij:
+  nummer: null
+  naam: Ei-ij
+
+au-ou:
+  nummer: null
+  naam: Au-ou
+
+uw-rijtje:
+  nummer: null
+  naam: Woord van het uw-rijtje
+
+eren-enen-elen:
+  nummer: null
+  naam: Woord met -eren, -enen, -elen
+
+samenstelling:
+  nummer: null
+  naam: Samenstelling
