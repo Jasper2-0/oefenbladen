@@ -10,3 +10,5 @@ fonts/*.otf
 
 # Gemaakte pdf's
 *.pdf
+# ... behalve de voorbeelden, zodat je online ziet wat eruit komt
+!voorbeelden/*.pdf

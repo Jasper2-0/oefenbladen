@@ -8,19 +8,27 @@ met (vanuit de projectmap):
 sh maak.sh voorbeelden/rekenen.typ
 ```
 
+Bij elk voorbeeld staat de pdf die eruit komt, zodat je het hele pad van
+invoer naar blad kunt zien zonder Typst te installeren. Na een wijziging in
+`kern/` of `vakken/` maak je ze allemaal opnieuw met:
+
+```bash
+for f in voorbeelden/*.typ; do sh maak.sh "$f"; done; sh maak.sh voorbeelden/rekenen.typ antwoorden
+```
+
 Wil je een blad aanpassen? Kopieer het naar `prive/` (staat in `.gitignore`)
 en verander alleen de inhoud: getallen, kern, letters, woorden. De opmaak zit
 in `kern/` en `vakken/`; daar hoef je niets aan te doen.
 
-| Bestand | Vak | Laat zien | Wat pas je aan |
+| Bestand → resultaat | Vak | Laat zien | Wat pas je aan |
 | --- | --- | --- | --- |
-| `lezen.typ` | Lezen groep 3 (Veilig Leren Lezen, KIM) | Leesblad (1 minuut lezen) en rol-en-lees-spel | De kern: `"start"`, `"1"` … `"11"` (zonder "kern"); `seed` voor een andere volgorde |
-| `schrijven.typ` | Schrijven groep 3 (Pennenstreken) | Per letter: groot overtrekken, op de lijn, woorden en een zinnetje | Kern en letter; `zin` en `extra` (eigen woorden). Een woord met een letter die nog niet gehad is, geeft een fout |
-| `rekenen.typ` | Rekenen groep 4 | Sprongen van 10, rekenen via de 10, geld; antwoordblad met `sh maak.sh voorbeelden/rekenen.typ antwoorden` | De getallen. De antwoorden rekent het blad zelf uit |
-| `spelling.typ` | Spelling groep 4 (Staal) | Regelkader, invulzinnen, dictee | Categorieën en zinnen; zie hieronder voor de regelzinnen |
-| `woordenschat.typ` + `woorden.yaml` | Woordenschat | Woordenlijst en woordzoekers | De woorden in `woorden.yaml`; kopieer beide bestanden |
-| `woordkaartjes.typ` | Woordenschat | Kaartjes: voorkant woord, achterkant betekenis; dubbelzijdig printen | Gebruikt `woorden.yaml` |
-| `bingo.typ` | Woordenschat | Voorleeslijst en bingokaarten (4 × 4) | Gebruikt `woorden.yaml`; minstens 16 woorden |
+| [`lezen.typ`](lezen.typ) → [pdf](lezen.pdf) | Lezen groep 3 (Veilig Leren Lezen, KIM) | Leesblad (1 minuut lezen) en rol-en-lees-spel | De kern: `"start"`, `"1"` … `"11"` (zonder "kern"); `seed` voor een andere volgorde |
+| [`schrijven.typ`](schrijven.typ) → [pdf](schrijven.pdf) | Schrijven groep 3 (Pennenstreken) | Per letter: groot overtrekken, op de lijn, woorden en een zinnetje | Kern en letter; `zin` en `extra` (eigen woorden). Een woord met een letter die nog niet gehad is, geeft een fout |
+| [`rekenen.typ`](rekenen.typ) → [pdf](rekenen.pdf), [antwoorden](rekenen-antwoorden.pdf) | Rekenen groep 4 | Sprongen van 10, rekenen via de 10, geld; antwoordblad met `sh maak.sh voorbeelden/rekenen.typ antwoorden` | De getallen. De antwoorden rekent het blad zelf uit |
+| [`spelling.typ`](spelling.typ) → [pdf](spelling.pdf) | Spelling groep 4 (Staal) | Regelkader, invulzinnen, dictee | Categorieën en zinnen; zie hieronder voor de regelzinnen |
+| [`woordenschat.typ`](woordenschat.typ) + [`woorden.yaml`](woorden.yaml) → [pdf](woordenschat.pdf) | Woordenschat | Woordenlijst en woordzoekers | De woorden in `woorden.yaml`; kopieer beide bestanden |
+| [`woordkaartjes.typ`](woordkaartjes.typ) → [pdf](woordkaartjes.pdf) | Woordenschat | Kaartjes: voorkant woord, achterkant betekenis; dubbelzijdig printen | Gebruikt `woorden.yaml` |
+| [`bingo.typ`](bingo.typ) → [pdf](bingo.pdf) | Woordenschat | Voorleeslijst en bingokaarten (4 × 4) | Gebruikt `woorden.yaml`; minstens 16 woorden |
 
 ## Regelzinnen van Staal
 

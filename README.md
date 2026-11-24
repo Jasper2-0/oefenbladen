@@ -11,6 +11,9 @@ Het project heeft drie delen:
 | Methoden | `methoden/` | De opzet van de methodes, uit openbare bronnen. |
 | Generator | `kern/`, `vakken/`, `fonts/` | Maakt van een briefing een printbaar blad. |
 
+Wil je eerst zien wat eruit komt? In [`voorbeelden/`](voorbeelden/) staat
+per vak een voorbeeld met de pdf die het oplevert.
+
 ## Aan de slag
 
 1. Installeer [Typst](https://typst.app) 0.15 of nieuwer, op een Mac
