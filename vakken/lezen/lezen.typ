@@ -21,6 +21,10 @@
   uit
 }
 
+// Geeft een duidelijke fout als kern k niet in kernen.yaml staat.
+#let _kern(kernen, k) = assert(k in kernen,
+  message: "Onbekende kern \"" + k + "\". Kies uit: " + kernen.keys().join(", ") + " (zonder \"kern\" ervoor).")
+
 // Alle woorden van één kern, zonder dubbele.
 #let _woorden(kernen, k) = _uniek(kernen.at(k).woordjes + kernen.at(k).oefen)
 
@@ -30,6 +34,7 @@
 // `aantal` woorden: zoveel mogelijk (tot `nieuw`) van kern k, de rest van de
 // kernen ervoor. Gehusseld met een vaste seed.
 #let kernwoorden(kernen, k, aantal: 40, nieuw: 24, seed: 1) = {
+  _kern(kernen, k)
   let eigen = hussel(_woorden(kernen, k), seed)
   let n = calc.min(nieuw, eigen.len())
   let oud = hussel(
@@ -49,6 +54,7 @@
 // Woorden in `kolommen` kolommen, van boven naar beneden te lezen per rij,
 // en onderaan rondjes om de score van elke dag in te schrijven.
 #let leesblad(kernen, k, aantal: 40, nieuw: 24, kolommen: 5, dagen: 10, seed: 1) = {
+  _kern(kernen, k)
   let woorden = kernwoorden(kernen, k, aantal: aantal, nieuw: nieuw, seed: seed)
   opdracht(1, [Lees zo veel woordjes als je kunt],
     instructie: [Lees elke dag 1 minuut, rij voor rij. Je vader of moeder kijkt op de klok. Hoeveel woordjes heb je gelezen? Schrijf het in het rondje van die dag.],
@@ -124,6 +130,7 @@
 }
 
 #let rolenlees(kernen, k, seed: 1) = {
+  _kern(kernen, k)
   let spelregel = [Speel met z'n tweeën. Gooi de dobbelsteen en lees een letter uit de rij met evenveel ogen. Goed gelezen? Kruis hem door. Wie heeft als eerste een hele rij?]
   if kernen.at(k).letters.len() > 0 {
     opdracht(1, [Rol en lees: letters], instructie: spelregel)[

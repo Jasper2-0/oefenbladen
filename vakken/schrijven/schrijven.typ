@@ -93,6 +93,10 @@
 // De letters die het kind kent als `letter` van kern `k` aan de beurt is:
 // alle letters van de kernen ervoor en van kern k tot en met `letter`.
 #let bekende-letters(kernen, k, letter) = {
+  assert(k in kernen,
+    message: "Onbekende kern \"" + k + "\". Kies uit: " + kernen.keys().join(", ") + " (zonder \"kern\" ervoor).")
+  assert(letter in kernen.at(k).letters,
+    message: "De letter \"" + letter + "\" hoort niet bij kern " + k + ". Die kern heeft: " + kernen.at(k).letters.join(", ") + ".")
   let uit = ()
   for (naam, kern) in kernen {
     for l in kern.letters {
@@ -124,8 +128,8 @@
 // Controle voor een eigen zinnetje: alleen bekende letters, anders een fout.
 #let _controleer(zin, kent) = {
   for w in zin.split(regex("[^a-z]+")).filter(w => w != "") {
-    let vreemd = klanken(w).filter(x => x not in kent)
-    assert(vreemd.len() == 0, message: "'" + w + "' heeft letters die nog niet gehad zijn: " + vreemd.join(", "))
+    let vreemd = klanken(w).filter(x => x not in kent).dedup()
+    assert(vreemd.len() == 0, message: "In \"" + w + "\" staan letters die nog niet gehad zijn: " + vreemd.join(", ") + ". Kies een ander woord.")
   }
 }
 

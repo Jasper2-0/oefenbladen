@@ -1,0 +1,99 @@
+# Voorbeeld van een woordenlijst bij een thema (16 woorden, 2 weken). Zelf verzonnen.
+# woord, lidwoord (de, het of null), week, uitleg, kaartje (korte betekenis
+# voor de woordkaartjes), voorbeeldzin; optioneel afbreken (bijv. "boe-ren-erf").
+- woord: boerderij
+  lidwoord: de
+  week: 1
+  uitleg: een bedrijf met land en dieren
+  kaartje: "plek waar een boer werkt en woont"
+  voorbeeldzin: Op de boerderij wonen koeien en kippen.
+- woord: stal
+  lidwoord: de
+  week: 1
+  uitleg: een gebouw waar dieren in slapen
+  kaartje: "huis voor dieren"
+  voorbeeldzin: De koeien gaan 's avonds de stal in.
+- woord: melken
+  lidwoord: null
+  week: 1
+  uitleg: melk uit de uier van een koe of geit halen
+  kaartje: "melk halen bij een koe"
+  voorbeeldzin: De boer gaat de koeien melken.
+- woord: weiland
+  lidwoord: het
+  week: 1
+  uitleg: een stuk land met gras waar dieren lopen
+  kaartje: "veld met gras"
+  voorbeeldzin: De schapen lopen in het weiland.
+- woord: oogst
+  lidwoord: de
+  week: 1
+  uitleg: alles wat je van het land haalt als het rijp is
+  kaartje: "wat je van het land haalt"
+  voorbeeldzin: De oogst van dit jaar is groot.
+- woord: trekker
+  lidwoord: de
+  week: 1
+  uitleg: een sterke machine die een kar of ploeg trekt
+  kaartje: "machine van de boer"
+  voorbeeldzin: De boer rijdt op de trekker over het land.
+- woord: hooi
+  lidwoord: het
+  week: 1
+  uitleg: gedroogd gras, eten voor dieren in de winter
+  kaartje: "droog gras"
+  voorbeeldzin: Het paard eet hooi.
+- woord: kudde
+  lidwoord: de
+  week: 1
+  uitleg: een grote groep dieren van dezelfde soort
+  kaartje: "groep dieren"
+  voorbeeldzin: Een kudde schapen loopt over de dijk.
+- woord: schuur
+  lidwoord: de
+  week: 2
+  uitleg: een gebouw waar je spullen of machines bewaart
+  kaartje: "gebouw om dingen in te bewaren"
+  voorbeeldzin: De trekker staat in de schuur.
+- woord: voeren
+  lidwoord: null
+  week: 2
+  uitleg: dieren eten geven
+  kaartje: "eten geven aan dieren"
+  voorbeeldzin: Wij mogen de geiten voeren.
+- woord: akker
+  lidwoord: de
+  week: 2
+  uitleg: een stuk land waar de boer iets op laat groeien
+  kaartje: "land waar gewassen groeien"
+  voorbeeldzin: Op de akker groeien aardappels.
+- woord: zaaien
+  lidwoord: null
+  week: 2
+  uitleg: zaadjes in de grond stoppen zodat er planten uit groeien
+  kaartje: "zaadjes in de grond doen"
+  voorbeeldzin: In de lente gaat de boer zaaien.
+- woord: biggetje
+  lidwoord: het
+  week: 2
+  uitleg: een jong varken
+  kaartje: "jong varken"
+  voorbeeldzin: Het biggetje rolt in de modder.
+- woord: hek
+  lidwoord: het
+  week: 2
+  uitleg: een afsluiting van palen en planken of draad
+  kaartje: "afsluiting om een wei"
+  voorbeeldzin: Doe het hek dicht, anders lopen de koeien weg.
+- woord: veulen
+  lidwoord: het
+  week: 2
+  uitleg: een jong paard
+  kaartje: "jong paard"
+  voorbeeldzin: Het veulen staat naast zijn moeder.
+- woord: emmer
+  lidwoord: de
+  week: 2
+  uitleg: een rond vat met een hengsel om water of melk in te dragen
+  kaartje: "vat met een hengsel"
+  voorbeeldzin: De boer vult de emmer met water.

@@ -11,6 +11,39 @@ Het project heeft drie delen:
 | Methoden | `methoden/` | De opzet van de methodes, uit openbare bronnen. |
 | Generator | `kern/`, `vakken/`, `fonts/` | Maakt van een briefing een printbaar blad. |
 
+## Aan de slag
+
+1. Installeer [Typst](https://typst.app) 0.15 of nieuwer, op een Mac
+   bijvoorbeeld met `brew install typst`.
+2. Clone deze repo en ga naar de map.
+3. Haal de lettertypen op (eenmalig):
+
+   ```bash
+   sh fonts/ophalen.sh
+   ```
+
+4. Maak een voorbeeldblad:
+
+   ```bash
+   sh maak.sh voorbeelden/rekenen.typ
+   sh maak.sh voorbeelden/rekenen.typ antwoorden
+   ```
+
+   De pdf komt naast het bestand: `voorbeelden/rekenen.pdf` en
+   `voorbeelden/rekenen-antwoorden.pdf`.
+5. Maak je eigen bladen in de map `prive/`. Die staat in `.gitignore` en gaat
+   dus nooit mee naar GitHub. Kopieer een voorbeeld, pas de inhoud aan en maak
+   de pdf:
+
+   ```bash
+   mkdir -p prive
+   cp voorbeelden/rekenen.typ prive/rekenen-week-1.typ
+   sh maak.sh prive/rekenen-week-1.typ
+   ```
+
+In [`voorbeelden/README.md`](voorbeelden/README.md) staat per vak wat je kunt
+aanpassen. Print op 100% (werkelijke grootte), zeker bij schrijfbladen.
+
 ## Methoden en vakken
 
 | Vak | Methode | Functies | Gegevens |
@@ -33,11 +66,14 @@ functies aanroept met de inhoud van dat moment, bijvoorbeeld:
 #leesblad(kernen, "4", seed: 4)
 ```
 
-Compileer vanuit de projectmap:
+Maak de pdf met `sh maak.sh pad/naar/briefing.typ`, of met Typst zelf
+vanuit de projectmap:
 
 ```bash
 typst compile --root . --font-path fonts pad/naar/briefing.typ blad.pdf
 ```
+
+Zonder `--root .` vindt Typst de imports (`/vakken/...`) niet.
 
 ## Lettertypen
 

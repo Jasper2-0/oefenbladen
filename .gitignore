@@ -7,3 +7,6 @@ prive/
 # Lettertypen: niet in de repo, ophalen met fonts/ophalen.sh
 fonts/*.ttf
 fonts/*.otf
+
+# Gemaakte pdf's
+*.pdf

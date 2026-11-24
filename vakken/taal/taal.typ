@@ -38,6 +38,7 @@
 #let regels-van(kaart: regelkaart-groep-4, tekst: (:), ..namen) = {
   show regex("\b[12]e\b"): it => [#it.text.first()#super[e]]
   regels(..namen.pos().map(n => {
+    assert(n in kaart, message: "Onbekende categorie \"" + n + "\". Kies uit: " + kaart.keys().join(", ") + ".")
     let c = kaart.at(n)
     let r = tekst.at(n, default: (:)).at("regel", default: ())
     (c.nummer, c.naam, r.join(linebreak()))
@@ -259,8 +260,10 @@
 })
 
 #let bingo(woorden, thema: "", kaarten: 6, seed: 2026) = {
+  let totaal = woorden.len()
   let woorden = woorden.filter(w => not _uitdrukking(w))
-  _bladkop([Woordenschatbingo], [Woordenschatbingo], [Met de 30 woorden van het thema], naam: false)
+  assert(woorden.len() >= 16, message: "Een bingokaart heeft 16 woorden; de lijst heeft er " + str(woorden.len()) + " (zonder uitdrukkingen). Voeg woorden toe.")
+  _bladkop([Woordenschatbingo], [Woordenschatbingo], [Met de #totaal woorden van het thema], naam: false)
 
   opdracht(none, [Zo speel je het])[
     - Iedereen krijgt een bingokaart.
@@ -331,7 +334,8 @@
 #let _ws-selectie(woorden, maat) = {
   let groepen = ()
   let weg = ()
-  for week in (1, 2) {
+  // Alleen de weken die in de woorden voorkomen.
+  for week in woorden.map(w => w.week).dedup().sorted() {
     let lijst = ()
     for w in woorden.filter(w => w.week == week and not _uitdrukking(w)) {
       // `zoekwoord` in de yaml geeft het woord voor de puzzel, bijv. "scherp" voor "scherp (zien)".
@@ -342,9 +346,14 @@
         lijst.push(woord)
       }
     }
-    let half = calc.ceil(lijst.len() / 2)
-    groepen.push((week: week, woorden: lijst.slice(0, half)))
-    groepen.push((week: week, woorden: lijst.slice(half)))
+    // Veel woorden: verdelen over twee puzzels. Weinig (≤ 6): één puzzel.
+    if lijst.len() > 6 {
+      let half = calc.ceil(lijst.len() / 2)
+      groepen.push((week: week, woorden: lijst.slice(0, half)))
+      groepen.push((week: week, woorden: lijst.slice(half)))
+    } else if lijst.len() > 0 {
+      groepen.push((week: week, woorden: lijst))
+    }
   }
   (groepen: groepen, weg: weg)
 }
