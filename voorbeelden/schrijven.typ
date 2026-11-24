@@ -6,7 +6,7 @@
 #import "/vakken/schrijven/schrijven.typ": *
 #let kernen = yaml("/methoden/vll/kernen.yaml")
 
-#show: oefenbladen.with(label: "Schrijven", thema: "kern 2", soort: "Schrijfblad")
+#show: oefenbladen.with(groep: 3, label: "Schrijven", thema: "kern 2", soort: "Schrijfblad")
 
 #letterblad(1, kernen, "2", "n", zin: "ik ren naar sim.")
 #letterblad(2, kernen, "2", "b", extra: ("bes", "beer"), zin: "ik eet een bes.")

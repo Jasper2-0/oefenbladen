@@ -18,6 +18,7 @@
 #let zacht = luma(90)         // grijze bijtekst
 
 #let _thema = state("thema", "")
+#let _groep = state("groep", none)
 
 // Voorspelbaar husselen: zelfde seed = zelfde volgorde bij opnieuw
 // compileren (bingokaarten, leesbladen).
@@ -39,7 +40,10 @@
 // Instellingen voor een heel document. `ouder: true` geeft kleinere tekst
 // voor bladen die de ouder leest (antwoorden). `label` staat voor de
 // themanaam in de kop en de voettekst, bijvoorbeeld "Rekenen" + "blok 3".
-#let oefenbladen(thema: "", soort: "", ouder: false, label: "Thema", body) = {
+// `groep` (bijv. 3 of 4) staat in de kop, in een vakje rechtsboven en in de
+// voettekst, zodat geprinte bladen van verschillende groepen uit elkaar te
+// houden zijn.
+#let oefenbladen(thema: "", soort: "", ouder: false, label: "Thema", groep: none, body) = {
   set document(title: soort + " – " + thema)
   set text(font: letter, size: if ouder { 11.5pt } else { grootte }, lang: "nl", weight: 400)
   set par(leading: 0.75em, spacing: 1em)
@@ -64,13 +68,14 @@
       v(-4pt)
       grid(
         columns: (1fr, auto, 1fr),
-        align(left)[#label #thema],
+        align(left)[#if groep != none [Groep #groep · ]#label #thema],
         align(center, blad),
         align(right)[pagina #counter(page).display()],
       )
     },
   )
   _thema.update(label + " " + thema)
+  _groep.update(groep)
   body
 }
 
@@ -79,12 +84,27 @@
   pagebreak(weak: true)
   [#metadata(boven) <blad>]
   block(width: 100%, below: 0.9cm, {
-    context text(size: 10pt, fill: zacht, tracking: 0.08em, upper(_thema.get()))
-    v(-2pt)
-    _kop(titel, size: 26pt)
-    if ondertitel != none {
-      v(-6pt)
-      text(size: 16pt, ondertitel)
+    context {
+      let g = _groep.get()
+      let links = {
+        text(size: 10pt, fill: zacht, tracking: 0.08em, upper(if g != none [Groep #g · ] + _thema.get()))
+        v(-2pt)
+        _kop(titel, size: 26pt)
+        if ondertitel != none {
+          v(-6pt)
+          text(size: 16pt, ondertitel)
+        }
+      }
+      if g == none { links } else {
+        grid(columns: (1fr, auto), column-gutter: 12pt, align: (left + top, right + top),
+          links,
+          box(width: 1.7cm, inset: (y: 5pt), radius: 6pt, stroke: 1.5pt + black, align(center, {
+            text(size: 9pt, tracking: 0.08em, upper[groep])
+            v(-8pt)
+            _kop(str(g), size: 26pt)
+          })),
+        )
+      }
     }
     if naam {
       v(4pt)

@@ -4,7 +4,7 @@
 // Zie methoden/staal/README.md.
 #import "/vakken/taal/taal.typ": *
 
-#show: oefenbladen.with(thema: "Voorbeeld", soort: "Spelling")
+#show: oefenbladen.with(groep: 4, thema: "Voorbeeld", soort: "Spelling")
 
 #werkblad(1, [Luchtwoord en plankwoord], soort: "Spellingblad")
 

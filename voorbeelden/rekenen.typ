@@ -3,7 +3,7 @@
 //   typst compile --root . --font-path fonts --input oplossing=ja voorbeelden/rekenen.typ antwoorden.pdf
 #import "/vakken/rekenen/rekenen.typ": *
 
-#show: oefenbladen.with(label: "Rekenen", thema: "voorbeeld",
+#show: oefenbladen.with(groep: 4, label: "Rekenen", thema: "voorbeeld",
   soort: if oplossing { "Antwoorden" } else { "Werkblad" })
 
 #werkblad(1, [Sprongen van 10])

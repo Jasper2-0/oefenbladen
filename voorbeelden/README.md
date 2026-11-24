@@ -20,6 +20,10 @@ Wil je een blad aanpassen? Kopieer het naar `prive/` (staat in `.gitignore`)
 en verander alleen de inhoud: getallen, kern, letters, woorden. De opmaak zit
 in `kern/` en `vakken/`; daar hoef je niets aan te doen.
 
+Zet bovenaan bij `oefenbladen.with(...)` de groep van het kind, bijvoorbeeld
+`groep: 3`. Die komt in een vakje rechtsboven en in de voettekst, zodat je
+geprinte bladen van verschillende kinderen of groepen uit elkaar houdt.
+
 | Bestand → resultaat | Vak | Laat zien | Wat pas je aan |
 | --- | --- | --- | --- |
 | [`lezen.typ`](lezen.typ) → [pdf](lezen.pdf) | Lezen groep 3 (Veilig Leren Lezen, KIM) | Leesblad (1 minuut lezen) en rol-en-lees-spel | De kern: `"start"`, `"1"` … `"11"` (zonder "kern"); `seed` voor een andere volgorde |

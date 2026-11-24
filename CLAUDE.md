@@ -45,13 +45,16 @@ gemaakt, kan een kind een jaar later opnieuw gebruiken.
   Groep 3: wat het kind leest in Futura (systeemfont op macOS, met de
   schoolschrift-a en -g zoals in Veilig Leren Lezen), minimaal 22 pt.
   Schrijven (alle groepen): Lusletters, zie `methoden/pennenstreken/README.md`.
-- Bovenaan elk werkblad: titel, thema of blok, "Naam:" en "Datum:".
+- Bovenaan elk werkblad: groep, titel, thema of blok, "Naam:" en "Datum:".
+  De groep staat ook in een vakje rechtsboven en in de voettekst
+  (`oefenbladen.with(groep: 4, ...)`), zodat geprinte bladen van
+  verschillende groepen niet door elkaar raken.
 - Elk werkblad begint op een nieuwe pagina. Een opdracht loopt nooit over een
   paginagrens.
 - Elke opdracht is een afgebakend blok: nummer, korte instructie, eventueel een
   voorbeeld in een licht kader.
 - Schrijflijnen: echte lijnen, regelhoogte ongeveer 1,2 cm.
-- Voettekst: thema of blok, werkbladnummer, paginanummer.
+- Voettekst: groep, thema of blok, werkbladnummer, paginanummer.
 - Rustig en kindvriendelijk, geen overdaad.
 - Geen logo's, huisstijl of opmaak van de uitgevers overnemen. Geen plaatjes
   van internet; tekeningen (getallenlijn, geld) maken we zelf in Typst.

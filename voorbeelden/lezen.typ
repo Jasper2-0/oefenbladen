@@ -4,7 +4,7 @@
 #import "/vakken/lezen/lezen.typ": *
 #let kernen = yaml("/methoden/vll/kernen.yaml")
 
-#show: oefenbladen.with(label: "Lezen", thema: "kern 3", soort: "Leesblad")
+#show: oefenbladen.with(groep: 3, label: "Lezen", thema: "kern 3", soort: "Leesblad")
 
 #werkblad(1, [Elke dag 1 minuut lezen], soort: "Leesblad")
 #leesblad(kernen, "3", seed: 3)

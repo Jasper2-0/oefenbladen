@@ -5,7 +5,7 @@
 #import "/vakken/taal/taal.typ": *
 #let woorden = yaml("woorden.yaml")
 
-#show: oefenbladen.with(thema: "Op de boerderij", soort: "Woordenschat")
+#show: oefenbladen.with(groep: 4, thema: "Op de boerderij", soort: "Woordenschat")
 
 #woordenlijst(woorden, 1)
 #woordenlijst(woorden, 2)
