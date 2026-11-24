@@ -46,10 +46,12 @@
 }
 
 // Korte invulplek in een woord, voor een of twee letters.
-#let gat(breedte: 1.3cm) = invul(breedte: breedte)
+// `tekst`: al ingevuld (voor een voorbeeld).
+#let gat(breedte: 1.3cm, tekst: none) = invul(breedte: breedte, tekst: tekst)
 
 // Sorteren: kolommen met een kop en lege schrijflijnen.
-#let sorteren(kolommen: (), rijen: 2) = table(
+// `voorbeeld`: per kolom een woord, als ingevulde grijze rij bovenaan.
+#let sorteren(kolommen: (), rijen: 2, voorbeeld: none) = table(
   columns: (1fr,) * kolommen.len(),
   inset: (x: 8pt, y: 0pt),
   stroke: (x, y) => (
@@ -57,11 +59,17 @@
     bottom: if y == 0 { 1pt + black } else { 0.7pt + lijnkleur },
   ),
   table.header(..kolommen.map(k => table.cell(inset: (x: 8pt, y: 7pt), strong(k)))),
+  ..if voorbeeld != none {
+    voorbeeld.map(w => table.cell(fill: vlak,
+      block(height: regel, align(left + bottom, pad(bottom: 5pt, _ingevuld(w))))))
+  },
   ..range(rijen * kolommen.len()).map(_ => block(height: regel)),
 )
 
 // Langermaakwoorden: het woord met een gat, en een lijn voor het lange woord.
-#let langermaken(..woorden) = table(
+// `voorbeeld`: (woord met ingevuld gat, het lange woord), een grijze rij
+// bovenaan.
+#let langermaken(voorbeeld: none, ..woorden) = table(
   columns: (1.6em, 5.5cm, 1fr),
   align: (left + bottom, left + bottom, left + bottom),
   inset: (x: 4pt, y: 6pt),
@@ -69,6 +77,10 @@
   table.header(
     [], text(size: 11pt, fill: zacht)[Woord], text(size: 11pt, fill: zacht)[Langer],
   ),
+  ..if voorbeeld != none {
+    ([], block(height: 0.9cm, align(bottom, voorbeeld.at(0))), lijn(tekst: voorbeeld.at(1)))
+      .map(c => table.cell(fill: vlak, c))
+  },
   ..woorden.pos().enumerate().map(((i, w)) => (
     [#(i + 1).], block(height: 0.9cm, align(bottom, w)), lijn(),
   )).flatten(),
@@ -76,13 +88,25 @@
 
 // Mini-dictee: genummerde schrijflijnen met een vakje voor het categorienummer,
 // daarna lijnen voor de zin(nen).
-#let dictee(woorden: 8, zinnen: 1) = {
+// `voorbeeld`: (woord, nummer), een ingevulde grijze rij bovenaan.
+#let dictee(woorden: 8, zinnen: 1, voorbeeld: none) = {
   grid(
     columns: (1.6em, 1fr, 1.4cm),
     column-gutter: 8pt,
     row-gutter: 0.25cm,
     align: (left + bottom, left + bottom, right + bottom),
     text(size: 11pt, fill: zacht)[], text(size: 11pt, fill: zacht)[Woord], text(size: 11pt, fill: zacht)[Nummer],
+    ..if voorbeeld != none {
+      let (w, n) = voorbeeld
+      (
+        block(width: 100%, height: regel, fill: vlak),
+        block(width: 100%, height: regel, fill: vlak, stroke: (bottom: 0.7pt + lijnkleur),
+          align(left + bottom, pad(left: 6pt, bottom: 5pt, _ingevuld(w)))),
+        block(width: 100%, height: regel, fill: vlak, align(right + bottom,
+          box(width: 1cm, height: 1cm, radius: 3pt, stroke: 0.9pt + black, fill: white,
+            align(center + horizon, text(size: 16pt, _ingevuld(str(n))))))),
+      )
+    },
     ..range(woorden).map(i => (
       [#(i + 1).],
       block(width: 100%, height: regel, stroke: (bottom: 0.7pt + lijnkleur)),

@@ -53,6 +53,16 @@ gemaakt, kan een kind een jaar later opnieuw gebruiken.
   paginagrens.
 - Elke opdracht is een afgebakend blok: nummer, korte instructie, eventueel een
   voorbeeld in een licht kader.
+- Vraagt een opdracht om visuele verwerking (tekenen, een pijl of sprong
+  zetten, iets in een plaatje, schema of vakjes invullen), dan is het
+  voorbeeld ook visueel: hetzelfde plaatje of dezelfde vakjes, al ingevuld.
+  Een voorbeeld in woorden alleen is dan niet genoeg. Zo'n voorbeeld is een
+  functie in `kern/` of `vakken/`, niet losse opmaak in het blad: de
+  parameter `voorbeeld:` van een opdrachtfunctie (goedfout, volgorde,
+  leesteken, samenstelling, tegendeel, sorteren, langermaken, dictee,
+  koppeltabel, meerminder, zominmogelijk), `tekst:` van invul, gat en vakje
+  en `goed:` van kies en meerkeuze in een `voorbeeld[...]`, en bij rekenen
+  `rekenvoorbeeld[...]` om dezelfde functie heen of `viade10-voorbeeld`. Gebruik in het voorbeeld geen som of woord uit de opdracht zelf.
 - Schrijflijnen: echte lijnen, regelhoogte ongeveer 1,2 cm.
 - Voettekst: groep, thema of blok, werkbladnummer, paginanummer.
 - Rustig en kindvriendelijk, geen overdaad.

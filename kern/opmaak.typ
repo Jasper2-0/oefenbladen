@@ -156,12 +156,18 @@
   },
 )
 
-// Voorbeeld in een licht kader.
+// Voorbeeld in een licht kader. Vraagt de opdracht om iets te omcirkelen,
+// in te vullen of te ordenen, dan laat het voorbeeld dat ingevuld zien met
+// dezelfde vorm: zie de `voorbeeld:`-parameter van de functies hieronder,
+// en `tekst:` van invul en vakje, `goed:` van kies en meerkeuze.
 #let voorbeeld(body) = block(
   width: 100%, fill: vlak, radius: 6pt, inset: (x: 12pt, y: 10pt),
   above: 0.3cm, below: 0.45cm,
   [#strong[Voorbeeld:] #h(4pt) #body],
 )
+// Dezelfde functie onder een andere naam, voor functies met een parameter
+// `voorbeeld`.
+#let voorbeeld_ = voorbeeld
 
 // Een tip of korte uitleg, zonder kader.
 #let tip(body) = block(above: 0.2cm, below: 0.4cm, text(style: "normal", [#strong[Tip:] #body]))
@@ -177,19 +183,28 @@
   ))),
 )
 
-// Invullijn in een zin met een vaste breedte.
-#let invul(breedte: 4.5cm) = box(
+// Een ingevuld antwoord in een voorbeeld: vet en zwart.
+#let _ingevuld(body) = text(weight: 800, body)
+
+// Invullijn in een zin met een vaste breedte. `tekst`: al ingevuld (voor
+// een voorbeeld).
+#let invul(breedte: 4.5cm, tekst: none) = box(
   width: breedte, height: 1em, baseline: 0.3em,
   stroke: (bottom: 0.7pt + lijnkleur),
+  if tekst != none { place(center + bottom, dy: -0.12em, _ingevuld(tekst)) },
 )
 
-// Invullijn die de rest van de regel vult.
-#let lijn() = box(width: 1fr, height: 1em, baseline: 0.3em, stroke: (bottom: 0.7pt + lijnkleur))
+// Invullijn die de rest van de regel vult. `tekst`: al ingevuld.
+#let lijn(tekst: none) = box(width: 1fr, height: 1em, baseline: 0.3em, stroke: (bottom: 0.7pt + lijnkleur),
+  if tekst != none { place(left + bottom, dx: 0.4em, dy: -0.12em, _ingevuld(tekst)) })
 
-// Klein vakje voor een letter, cijfer of leesteken.
-#let vakje(breedte: 1.1cm) = box(
+// Klein vakje voor een letter, cijfer of leesteken. `tekst`: al ingevuld
+// (voor een voorbeeld; het vakje is dan wit).
+#let vakje(breedte: 1.1cm, tekst: none) = box(
   width: breedte, height: 1.1cm, baseline: 0.35cm, radius: 3pt,
   stroke: 0.9pt + black,
+  fill: if tekst != none { white },
+  if tekst != none { align(center + horizon, text(size: 16pt, _ingevuld(tekst))) },
 )
 
 // Genummerde zinnen met ruimte om te schrijven. Elke zin is een los argument.
@@ -222,8 +237,11 @@
 // ---------------------------------------------------------------------------
 
 // Keuzes in een zin: vet, met ruimte eromheen om te omcirkelen.
-#let kies(scheiding: "/", ..opties) = {
-  let delen = opties.pos().map(o => box(inset: (x: 8pt), outset: (y: 6pt), strong(o)))
+// `goed`: het woord met een rondje erom (voor een voorbeeld).
+#let kies(scheiding: "/", goed: none, ..opties) = {
+  let delen = opties.pos().map(o => if goed != none and o == goed {
+    box(inset: (x: 8pt), outset: (y: 6pt), radius: 50%, stroke: 1.4pt + black, strong(o))
+  } else { box(inset: (x: 8pt), outset: (y: 6pt), strong(o)) })
   if scheiding == none {
     delen.join(h(0.6em))
   } else {
@@ -281,44 +299,62 @@
 // Onderstreept woord (voor het voorbeeld).
 #let onderstreept(body) = underline(stroke: 1.6pt, offset: 3pt, body)
 
-// Goed of fout: zin met de keuze goed / fout.
-#let goedfout(..zinnen) = table(
+// Goed of fout: zin met de keuze goed / fout. `voorbeeld`: (zin, "goed" of
+// "fout"), een grijze rij bovenaan met het antwoord omcirkeld.
+#let goedfout(voorbeeld: none, ..zinnen) = table(
   columns: (1.6em, 1fr, auto),
   align: (left + horizon, left + horizon, center + horizon),
   inset: (x: 6pt, y: 8pt),
   stroke: (x, y) => (bottom: 0.6pt + luma(150)),
+  ..if voorbeeld != none {
+    let (z, a) = voorbeeld
+    ([], z, kies("goed", "fout", goed: a)).map(c => table.cell(fill: vlak, c))
+  },
   ..zinnen.pos().enumerate().map(((i, z)) => (
     [#(i + 1).], z, kies("goed", "fout"),
   )).flatten(),
 )
 
-// Volgorde: een vakje voor het cijfer, dan de zin.
-#let volgorde(..items) = grid(
-  columns: (1.5cm, 1fr),
-  row-gutter: 0.35cm,
-  align: horizon,
-  ..items.pos().map(z => (vakje(), z)).flatten(),
-)
+// Volgorde: een vakje voor het cijfer, dan de zin. `voorbeeld`: een lijst
+// van (nummer, zin), in een voorbeeldkader met de nummers ingevuld.
+#let volgorde(voorbeeld: none, ..items) = {
+  let rooster(rijen) = grid(
+    columns: (1.5cm, 1fr),
+    row-gutter: 0.35cm,
+    align: horizon,
+    ..rijen.flatten(),
+  )
+  if voorbeeld != none {
+    voorbeeld_(rooster(voorbeeld.map(((n, z)) => (vakje(tekst: str(n)), z))))
+  }
+  rooster(items.pos().map(z => (vakje(), z)))
+}
 
-// Het omgekeerde: woord ↔ invullijn.
-#let tegendeel(..woorden) = zinnen(
-  ..woorden.pos().map(w => [#w #h(0.4em) ↔ #h(0.4em) #invul(breedte: 5cm)]),
-)
+// Het omgekeerde: woord ↔ invullijn. `voorbeeld`: (woord, tegendeel).
+#let tegendeel(voorbeeld: none, ..woorden) = {
+  let rij(w, t) = [#w #h(0.4em) ↔ #h(0.4em) #invul(breedte: 5cm, tekst: t)]
+  if voorbeeld != none { voorbeeld_(rij(..voorbeeld)) }
+  zinnen(..woorden.pos().map(w => rij(w, none)))
+}
 
 // Twee woorden worden één woord. Een paar ("stappen", "plan") wordt een
 // som met een invullijn; een `zelf` maakt een rij met drie lege lijnen.
 #let zelf(tekst) = [#tekst #invul(breedte: 2.6cm) + #invul(breedte: 2.6cm) = #invul(breedte: 3.6cm)]
-#let samenstelling(..paren) = zinnen(
-  ..paren.pos().map(p => if type(p) == array {
-    [#p.at(0) + #p.at(1) = #invul(breedte: 5.5cm)]
-  } else { p }),
-)
+// `voorbeeld`: (woord, woord, samen).
+#let samenstelling(voorbeeld: none, ..paren) = {
+  let som(a, b, samen) = [#a + #b = #invul(breedte: 5.5cm, tekst: samen)]
+  if voorbeeld != none { voorbeeld_(som(..voorbeeld)) }
+  zinnen(..paren.pos().map(p => if type(p) == array { som(p.at(0), p.at(1), none) } else { p }))
+}
 
-// Punt of vraagteken: zin met een vakje erachter.
-#let leesteken(..zinnen-lijst) = zinnen(
-  ruimte: 0.45cm,
-  ..zinnen-lijst.pos().map(z => [#z #h(0.3em) #vakje()]),
-)
+// Punt of vraagteken: zin met een vakje erachter. `voorbeeld`: (zin, teken).
+#let leesteken(voorbeeld: none, ..zinnen-lijst) = {
+  if voorbeeld != none { voorbeeld_[#voorbeeld.at(0) #h(0.3em) #vakje(tekst: voorbeeld.at(1))] }
+  zinnen(
+    ruimte: 0.45cm,
+    ..zinnen-lijst.pos().map(z => [#z #h(0.3em) #vakje()]),
+  )
+}
 
 // ---------------------------------------------------------------------------
 // Lezen
@@ -341,11 +377,12 @@
 // het leesverhaal).
 #let nieuwepagina() = pagebreak(weak: true)
 
-// Meerkeuzevraag: vraag met keuzes a, b, c om te omcirkelen.
-#let meerkeuze(nummer, vraag, ..opties) = block(
+// Meerkeuzevraag: vraag met keuzes a, b, c om te omcirkelen. `goed`: de
+// letter met een rondje erom, en `nummer: none` (voor een voorbeeld).
+#let meerkeuze(nummer, vraag, goed: none, ..opties) = block(
   width: 100%, breakable: false, above: 0.5cm, below: 0.5cm,
   {
-    strong[#nummer. #vraag]
+    if nummer == none { strong(vraag) } else { strong[#nummer. #vraag] }
     v(2pt)
     let lijst = opties.pos()
     let letters = ("a", "b", "c", "d")
@@ -353,7 +390,9 @@
       columns: (1fr,) * lijst.len(), column-gutter: 10pt,
       ..lijst.enumerate().map(((i, o)) => grid(
         columns: (1.4em, 1fr),
-        box(outset: (y: 4pt), strong(letters.at(i))), o,
+        if letters.at(i) == goed {
+          box(outset: (x: 5pt, y: 4pt), radius: 50%, stroke: 1.4pt + black, strong(letters.at(i)))
+        } else { box(outset: (y: 4pt), strong(letters.at(i))) }, o,
       )),
     )
   },

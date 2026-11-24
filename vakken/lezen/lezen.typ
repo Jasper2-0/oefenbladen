@@ -129,15 +129,35 @@
   hussel(lijst.slice(0, aantal), seed + 9)
 }
 
+// Een doorgekruist vakje van het rooster (voor het voorbeeld).
+#let _doorkruist(body) = box(width: 1.8cm, height: 1.05cm, stroke: 0.8pt + lijnkleur, fill: white, {
+  place(center + horizon, body)
+  place(line(start: (0.2cm, 0.15cm), end: (1.6cm, 0.9cm), stroke: 1pt + zacht))
+  place(line(start: (0.2cm, 0.9cm), end: (1.6cm, 0.15cm), stroke: 1pt + zacht))
+})
+
+// Voorbeeld van één beurt: gooien, de rij zoeken, lezen en doorkruisen.
+#let _rolvoorbeeld(soort, item, size) = voorbeeld(grid(
+  columns: (auto, 1fr, auto), column-gutter: 0.4cm, align: horizon,
+  dobbelsteen(3),
+  [Je gooit 3. Je leest #soort uit rij 3. Goed gelezen? Kruis hem door.],
+  _doorkruist(_lees(item, size: size)),
+))
+
 #let rolenlees(kernen, k, seed: 1) = {
   _kern(kernen, k)
-  let spelregel = [Speel met z'n tweeën. Gooi de dobbelsteen en lees een letter uit de rij met evenveel ogen. Goed gelezen? Kruis hem door. Wie heeft als eerste een hele rij?]
-  if kernen.at(k).letters.len() > 0 {
+  let spelregel = [Speel met z'n tweeën. Om de beurt gooi je de dobbelsteen. Wie heeft als eerste een hele rij doorgekruist?]
+  let letters = _kernletters(kernen, k, 48, 3, seed)
+  let woorden = kernwoorden(kernen, k, aantal: 30, nieuw: 20, seed: seed + 50)
+  let heeft-letters = kernen.at(k).letters.len() > 0
+  if heeft-letters {
     opdracht(1, [Rol en lees: letters], instructie: spelregel)[
-      #_rooster(_kernletters(kernen, k, 48, 3, seed), 8, 22pt)
+      #_rolvoorbeeld([een letter], letters.at(16), 22pt)
+      #_rooster(letters, 8, 22pt)
     ]
   }
   opdracht(2, [Rol en lees: woorden], instructie: [Zelfde spel, nu met woorden.])[
-    #_rooster(kernwoorden(kernen, k, aantal: 30, nieuw: 20, seed: seed + 50), 5, 20pt)
+    #if not heeft-letters { _rolvoorbeeld([een woord], woorden.at(10), 20pt) }
+    #_rooster(woorden, 5, 20pt)
   ]
 }

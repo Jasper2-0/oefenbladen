@@ -17,6 +17,7 @@
 #opdracht(2, [Woorden met cht],
   instructie: [Lees de zin. Schrijf *cht* op de streep.],
 )[
+  #voorbeeld[De boot vaart door de gra#gat(tekst: "cht").]
   #zinnen(
     [Het is midderna#gat().],
     [Doe het li#gat() aan, het is donker.],
@@ -27,6 +28,7 @@
 #opdracht(3, [Woorden met nk],
   instructie: [Lees de zin. Schrijf *nk* op de streep. Daar mag geen g tussen.],
 )[
+  #voorbeeld[Mijn pi#gat(tekst: "nk") is mijn kleinste vinger.]
   #zinnen(
     [Ik zit op de ba#gat().],
     [De boot zi#gat() naar de bodem.],
@@ -37,5 +39,5 @@
 #opdracht(4, [Dictee],
   instructie: [Je vader of moeder leest de woorden en de zin voor. Schrijf ze op.],
 )[
-  #dictee(woorden: 6, zinnen: 1)
+  #dictee(woorden: 6, zinnen: 1, voorbeeld: ("zacht", 3))
 ]
