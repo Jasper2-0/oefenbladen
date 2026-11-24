@@ -31,7 +31,8 @@ gemaakt, kan een kind een jaar later opnieuw gebruiken.
   - `vakken/lezen/lezen.typ` : Veilig Leren Lezen groep 3 (leesblad,
     rol en lees).
 - `methoden/<methode>/` : gegevens per methode, met bronnen.
-- `fonts/` : Nexa Heavy (koppen) en Lusletters (schrijven).
+- `fonts/` : Nexa Heavy (koppen) en Lusletters (schrijven). Niet in git;
+  `sh fonts/ophalen.sh` haalt ze op.
 
 ## Vormgeving (alle vakken)
 
@@ -39,7 +40,7 @@ gemaakt, kan een kind een jaar later opnieuw gebruiken.
 - Lettertype: Avenir (systeemfont op macOS). Dat is ook de letter van de
   woordkaartjes van Staal, zodat het blad vertrouwd aanvoelt voor het kind.
   Book (400) voor gewone tekst, Heavy (800) voor vet; Avenir heeft geen 700.
-  Titels en koppen in Nexa Heavy (`fonts/Nexa-Heavy.otf`, gratis gewicht van
+  Titels en koppen in Nexa Heavy (`fonts/Nexa-Heavy.ttf`, gratis voor privégebruik, van
   Fontfabric). Tekst voor het kind minimaal 14 pt met ruime regelafstand.
   Groep 3: wat het kind leest in Futura (systeemfont op macOS, met de
   schoolschrift-a en -g zoals in Veilig Leren Lezen), minimaal 22 pt.

@@ -39,4 +39,16 @@ Compileer vanuit de projectmap:
 typst compile --root . --font-path fonts pad/naar/briefing.typ blad.pdf
 ```
 
-Lettertypen: Avenir en Futura (macOS), Nexa Heavy en Lusletters (`fonts/`).
+## Lettertypen
+
+Avenir en Futura zijn systeemfonts van macOS. Nexa Heavy (koppen) en
+Lusletters (schrijfletter) staan niet in deze repo; haal ze eerst op:
+
+```bash
+sh fonts/ophalen.sh
+```
+
+Het script downloadt ze van de makers (Nexa Heavy via DaFont, gratis voor
+privégebruik; Lusletters van syboor.eu, SIL Open Font License) en controleert
+ze met een checksum. Op Windows of Linux ontbreken Avenir en Futura; Typst
+kiest dan een ander lettertype en geeft een waarschuwing.

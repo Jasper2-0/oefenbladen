@@ -3,3 +3,7 @@
 
 # Programma: alleen lokaal, eigen git zonder remote
 prive/
+
+# Lettertypen: niet in de repo, ophalen met fonts/ophalen.sh
+fonts/*.ttf
+fonts/*.otf
